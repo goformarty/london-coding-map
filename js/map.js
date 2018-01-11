@@ -1,9 +1,63 @@
 function initMap() {
-	var uluru = {lat: -25.363, lng: 131.044};
+
+	var mapCenter = new google.maps.LatLng(51.517991, -0.119327);
+
 	var map = new google.maps.Map(document.getElementById('map'), {
-	  zoom: 4,
-	  center: uluru
+		zoom: 12,
+		center: mapCenter
 	});
+
+
+
+
+	var locations = [
+		{name: "Google Campus", position: {lat: 51.522786, lng: -0.085099} },
+		{name: "Yumcha Camden Parkway", position: {lat: 51.538219, lng: -0.144162} },	
+		{name: "The Travel Cafe, Lambeth", position: {lat: 51.499614, lng: -0.114143}},	
+	];
+	
+	var markers = [];
+
+	createMarkers();
+	
+	function createMarkers() {
+		for (var i =0; i< locations.length; i++) {
+
+			console.log(locations[i]);
+			new google.maps.Marker({
+				position: locations[i].position,
+				map: map,
+				animation: google.maps.Animation.DROP,
+			});
+		}
+
+	}
+
+	// var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+	// var createMarkers = function(locations, map) {
+	// 	console.log('am i here?');
+	// 	for (var i = 0; i<= locations.length; i++) {
+	// 		console.log('hey', i);
+	// 		new google.maps.Marker({
+	// 			position: locations[i],
+	// 			map: map,
+	// 			animation: google.maps.Animation.DROP,
+	// 			title: 'Uluru (Ayers Rock)'
+	// 		});
+	// 	}
+	// }
+
+		//   var markers = locations.map(function(location, i) {
+	// 	return new google.maps.Marker({
+	// 	  position: location,
+	// 	  label: labels[i % labels.length]
+	// 	});
+	//   });
+
+	var uluru = {lat: 51.522786, lng: -0.085099};
+
+
 
 	var contentString = '<div id="content">'+
 		'<div id="siteNotice">'+
@@ -31,12 +85,30 @@ function initMap() {
 	  maxWidth: 400
 	});
 
-	var marker = new google.maps.Marker({
+	var markerGoogleCampus = new google.maps.Marker({
 	  position: uluru,
 	  map: map,
+	  animation: google.maps.Animation.DROP,
 	  title: 'Uluru (Ayers Rock)'
 	});
-	marker.addListener('click', function() {
-	  infowindow.open(map, marker);
+	markerGoogleCampus.addListener('click', function() {
+	  infowindow.open(map, markerGoogleCampus);
 	});
+
+	function drop() {
+        for (var i = 0; i < locations.length; i++) {
+          addMarkerWithTimeout(locations[i], i * 200);
+        }
+      }
+
+	function addMarkerWithTimeout(position, timeout) {
+        window.setTimeout(function() {
+          markers.push(new google.maps.Marker({
+            position: position,
+            map: map,
+            animation: google.maps.Animation.DROP
+          }));
+        }, timeout);
+      }
   }
+
