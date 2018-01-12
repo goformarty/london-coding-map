@@ -16,9 +16,13 @@ function initMap() {
 		{name: "The Travel Cafe, Lambeth", position: {lat: 51.499614, lng: -0.114143}},	
 	];
 	
+
 	var markers = [];
+	var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 	createMarkers();
+
+	
 	
 	function createMarkers() {
 		for (var i =0; i< locations.length; i++) {
@@ -27,13 +31,15 @@ function initMap() {
 			new google.maps.Marker({
 				position: locations[i].position,
 				map: map,
+				label: labels[i],
 				animation: google.maps.Animation.DROP,
+
 			});
 		}
 
 	}
 
-	// var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
 
 	// var createMarkers = function(locations, map) {
 	// 	console.log('am i here?');
