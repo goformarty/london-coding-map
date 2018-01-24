@@ -10,19 +10,38 @@ var locations = [
   }
 ];
 
-function initMap() {
-  var mapCenter = new google.maps.LatLng(51.517991, -0.119327);
 
-  var map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 12,
-    center: mapCenter
-  });
+
+function initMap() {
+  
+  var map;
+
+  createMap();
+  createMarkers(locations);
+
+
+  function createMap() {
+    var mapCenter = new google.maps.LatLng(51.517991, -0.119327);
+    var mapZoom = 12;
+
+    map = new google.maps.Map(document.getElementById("map"), {
+      zoom: mapZoom,
+      center: mapCenter
+    });
+
+    console.log(map);
+  }
+ 
+  console.log(map + "im outside");
+
+  
 
   var markers = [];
-  createMarkers(locations);
+
 
   function createMarkers(locations) {
     this.locations = locations;
+    console.log(map);
     for (var i = 0; i < locations.length; i++) {
       console.log(locations[i]);
       new google.maps.Marker({
@@ -73,21 +92,4 @@ function initMap() {
     infowindow.open(map, markerGoogleCampus);
   });
 
-  function drop() {
-    for (var i = 0; i < locations.length; i++) {
-      addMarkerWithTimeout(locations[i], i * 200);
-    }
-  }
-
-  function addMarkerWithTimeout(position, timeout) {
-    window.setTimeout(function() {
-      markers.push(
-        new google.maps.Marker({
-          position: position,
-          map: map,
-          animation: google.maps.Animation.DROP
-        })
-      );
-    }, timeout);
-  }
 }
