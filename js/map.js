@@ -10,11 +10,14 @@ var locations = [
   }
 ];
 
+var descriptions = [];
+
 
 
 function initMap() {
   
   var map;
+  var markers = [];
 
   createMap();
   createMarkers(locations);
@@ -28,16 +31,7 @@ function initMap() {
       zoom: mapZoom,
       center: mapCenter
     });
-
-    console.log(map);
   }
- 
-  console.log(map + "im outside");
-
-  
-
-  var markers = [];
-
 
   function createMarkers(locations) {
     this.locations = locations;
@@ -53,6 +47,12 @@ function initMap() {
     }
   }
 
+
+  function addMarkersDescriptions() {
+    for (var j = 0; j < markers.length; j++) {
+
+    }
+  }
   var uluru = { lat: 51.522786, lng: -0.085099 };
 
   var contentString =
@@ -82,6 +82,27 @@ function initMap() {
     maxWidth: 400
   });
 
+  var description1 = 
+  '<div id="content1">' +
+  '<div id="siteNotice1">' +
+  "</div>" +
+  '<h2 id="firstHeading1" class="firstHeading">Google Campus</h2>' +
+  '<div id="bodyContent">' +
+  "<p><b>A coworking space full of coders, designers and entrepreneurs!</b><br /><br />" + 
+  "Requires a membership to get in, but there's a free membership " +
+  "option that gives an access to the Campus Cafe in the lower floor. " +
+  "The cafe is a perfect place to get things done, " +
+  " take a break, or collaborate with like-minded people. " +
+  "Strong community and strong coffee! " +
+  '<p><a href="https://www.campus.co/london/en/"</a>website</p>' +
+  "</div>" +
+  "</div>";
+
+  var infowindow1 = new google.maps.InfoWindow({
+    content: description1,
+    maxWidth: 400
+  });
+
   var markerGoogleCampus = new google.maps.Marker({
     position: uluru,
     map: map,
@@ -89,7 +110,7 @@ function initMap() {
     title: "Uluru (Ayers Rock)"
   });
   markerGoogleCampus.addListener("click", function() {
-    infowindow.open(map, markerGoogleCampus);
+    infowindow1.open(map, markerGoogleCampus);
   });
 
 }
