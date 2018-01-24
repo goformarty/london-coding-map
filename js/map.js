@@ -87,19 +87,36 @@ function initMap() {
   '<div id="siteNotice1">' +
   "</div>" +
   '<h2 id="firstHeading1" class="firstHeading">Google Campus</h2>' +
-  '<div id="bodyContent">' +
+  '<div id="bodyContent1">' +
   "<p><b>A coworking space full of coders, designers and entrepreneurs!</b><br /><br />" + 
   "Requires a membership to get in, but there's a free membership " +
   "option that gives an access to the Campus Cafe in the lower floor. " +
   "The cafe is a perfect place to get things done, " +
-  " take a break, or collaborate with like-minded people. " +
-  "Strong community and strong coffee! " +
+  "take a break, or collaborate with like-minded people. " +
+  "Strong community and strong coffee! </p>" +
+  '<p><a href="https://www.campus.co/london/en/"</a>website</p>' +
+  "</div>" +
+  "</div>";
+
+  var description2 = 
+  '<div id="content2">' +
+  '<div id="siteNotice2>' +
+  "</div>" +
+  '<h2 id="firstHeading2" class="firstHeading">Yumchaa Camden</h2>' +
+  '<div id="bodyContent2">' +
+  "<p><b>Cafe with cosy armchairs and a glass roof!</b><br /><br />" + 
+  "Formerly a pet shop, still has a frontage that advertises " +
+  "'Talking parrots' and 'monkeys'. Chaplin bought two Abyssinian kittens there " +
+  "and Winston Churchill famously got his cat from this shop!  " +
+  "It’s a perfect place to code - there are few pretty big wooden " +
+  "tables and some sockets, plenty of tea blends and super tasty to fuel yourself up, " +
+  "and even more incredible matcha latte and matcha cakes! It’s also the place where I came across the advert of my current flat <3  </p>" +
   '<p><a href="https://www.campus.co/london/en/"</a>website</p>' +
   "</div>" +
   "</div>";
 
   var infowindow1 = new google.maps.InfoWindow({
-    content: description1,
+    content: description2,
     maxWidth: 400
   });
 
